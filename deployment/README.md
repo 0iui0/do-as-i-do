@@ -37,6 +37,24 @@ When tuning the workspace placement, adjust x/y/z and yaw. Only tune pitch and
 roll if the gravity alignment (GeoCalib) from reconstruction was significantly
 incorrect — otherwise leave them at zero.
 
+### Try it on the whisk demo
+
+Replay the shipped `whisk` retarget (from the [`retargeting/`](../retargeting/README.md)
+demo) without re-running anything. The right-arm workspace preset already defaults
+to this clip's saved placement, so it comes up positioned in front of the arm:
+
+```bash
+# from deployment/mujoco_replay — right arm + Sharpa hand, 0.25x playback
+python replay_retarget.py \
+    --side right \
+    --traj ../../retargeting/outputs/sharpa/right/whisking/0/trajectory_mjwp.npz \
+    --speed 0.25
+```
+
+`--speed 0.25` starts the viser playback at quarter speed (change it live with the
+Speed buttons). Open the printed URL, then tweak the workspace / collision controls
+and **Save retarget** as usual.
+
 Headless solve (no GUI) to check IK residuals / collision clearance:
 
 ```bash
